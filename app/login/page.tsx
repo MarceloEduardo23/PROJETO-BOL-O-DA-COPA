@@ -32,7 +32,7 @@ export default function LoginPage() {
     if (!validate()) return
     setLoading(true)
     await new Promise((r) => setTimeout(r, 600))
-    const res = login(email, password)
+    const res = await login(email, password)
     setLoading(false)
     if (res.ok) {
       toast.success('Bem-vindo de volta!')
@@ -95,11 +95,7 @@ export default function LoginPage() {
           Entrar
         </Button>
 
-        <p className="rounded-lg bg-secondary/60 p-3 text-center text-xs text-muted-foreground">
-          Contas de teste: <strong className="text-foreground">voce@copapalpite.com</strong> /
-          123456 · admin: <strong className="text-foreground">admin@copapalpite.com</strong> /
-          admin
-        </p>
+
       </form>
     </AuthLayout>
   )

@@ -36,7 +36,7 @@ export default function CadastroPage() {
     if (!validate()) return
     setLoading(true)
     await new Promise((r) => setTimeout(r, 700))
-    const res = register(name, email, password)
+    const res = await register(name, email, password)
     setLoading(false)
     if (res.ok) {
       toast.success('Conta criada! Você já está no bolão.')
