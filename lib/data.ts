@@ -48,22 +48,64 @@ export interface Participant {
 }
 
 export const TEAMS: Record<string, Team> = {
+  // CONMEBOL (6)
   bra: { id: 'bra', name: 'Brasil', code: 'BRA', flag: '🇧🇷' },
   arg: { id: 'arg', name: 'Argentina', code: 'ARG', flag: '🇦🇷' },
-  fra: { id: 'fra', name: 'França', code: 'FRA', flag: '🇫🇷' },
-  esp: { id: 'esp', name: 'Espanha', code: 'ESP', flag: '🇪🇸' },
+  col: { id: 'col', name: 'Colômbia', code: 'COL', flag: '🇨🇴' },
+  ecu: { id: 'ecu', name: 'Equador', code: 'ECU', flag: '🇪🇨' },
+  par: { id: 'par', name: 'Paraguai', code: 'PAR', flag: '🇵🇾' },
+  uru: { id: 'uru', name: 'Uruguai', code: 'URU', flag: '🇺🇾' },
+
+  // CONCACAF (6)
+  usa: { id: 'usa', name: 'Estados Unidos', code: 'USA', flag: '🇺🇸' },
+  mex: { id: 'mex', name: 'México', code: 'MEX', flag: '🇲🇽' },
+  can: { id: 'can', name: 'Canadá', code: 'CAN', flag: '🇨🇦' },
+  cur: { id: 'cur', name: 'Curaçao', code: 'CUR', flag: '🇨🇼' },
+  hai: { id: 'hai', name: 'Haiti', code: 'HAI', flag: '🇭🇹' },
+  pan: { id: 'pan', name: 'Panamá', code: 'PAN', flag: '🇵🇦' },
+
+  // UEFA (16)
   eng: { id: 'eng', name: 'Inglaterra', code: 'ENG', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
   ger: { id: 'ger', name: 'Alemanha', code: 'GER', flag: '🇩🇪' },
-  por: { id: 'por', name: 'Portugal', code: 'POR', flag: '🇵🇹' },
-  ned: { id: 'ned', name: 'Holanda', code: 'NED', flag: '🇳🇱' },
-  mex: { id: 'mex', name: 'México', code: 'MEX', flag: '🇲🇽' },
-  usa: { id: 'usa', name: 'Estados Unidos', code: 'USA', flag: '🇺🇸' },
-  can: { id: 'can', name: 'Canadá', code: 'CAN', flag: '🇨🇦' },
-  uru: { id: 'uru', name: 'Uruguai', code: 'URU', flag: '🇺🇾' },
-  cro: { id: 'cro', name: 'Croácia', code: 'CRO', flag: '🇭🇷' },
-  jpn: { id: 'jpn', name: 'Japão', code: 'JPN', flag: '🇯🇵' },
-  mar: { id: 'mar', name: 'Marrocos', code: 'MAR', flag: '🇲🇦' },
+  aut: { id: 'aut', name: 'Áustria', code: 'AUT', flag: '🇦🇹' },
   bel: { id: 'bel', name: 'Bélgica', code: 'BEL', flag: '🇧🇪' },
+  bih: { id: 'bih', name: 'Bósnia e Herz.', code: 'BIH', flag: '🇧🇦' },
+  cro: { id: 'cro', name: 'Croácia', code: 'CRO', flag: '🇭🇷' },
+  sco: { id: 'sco', name: 'Escócia', code: 'SCO', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿' },
+  esp: { id: 'esp', name: 'Espanha', code: 'ESP', flag: '🇪🇸' },
+  fra: { id: 'fra', name: 'França', code: 'FRA', flag: '🇫🇷' },
+  ned: { id: 'ned', name: 'Holanda', code: 'NED', flag: '🇳🇱' },
+  nor: { id: 'nor', name: 'Noruega', code: 'NOR', flag: '🇳🇴' },
+  por: { id: 'por', name: 'Portugal', code: 'POR', flag: '🇵🇹' },
+  cze: { id: 'cze', name: 'Rep. Tcheca', code: 'CZE', flag: '🇨🇿' },
+  swe: { id: 'swe', name: 'Suécia', code: 'SWE', flag: '🇸🇪' },
+  sui: { id: 'sui', name: 'Suíça', code: 'SUI', flag: '🇨🇭' },
+  tur: { id: 'tur', name: 'Turquia', code: 'TUR', flag: '🇹🇷' },
+
+  // CAF (9)
+  rsa: { id: 'rsa', name: 'África do Sul', code: 'RSA', flag: '🇿🇦' },
+  alg: { id: 'alg', name: 'Argélia', code: 'ALG', flag: '🇩🇿' },
+  cpv: { id: 'cpv', name: 'Cabo Verde', code: 'CPV', flag: '🇨🇻' },
+  civ: { id: 'civ', name: 'Costa do Marfim', code: 'CIV', flag: '🇨🇮' },
+  egy: { id: 'egy', name: 'Egito', code: 'EGY', flag: '🇪🇬' },
+  gha: { id: 'gha', name: 'Gana', code: 'GHA', flag: '🇬🇭' },
+  mar: { id: 'mar', name: 'Marrocos', code: 'MAR', flag: '🇲🇦' },
+  cod: { id: 'cod', name: 'RD Congo', code: 'COD', flag: '🇨🇩' },
+  sen: { id: 'sen', name: 'Senegal', code: 'SEN', flag: '🇸🇳' },
+  tun: { id: 'tun', name: 'Tunísia', code: 'TUN', flag: '🇹🇳' },
+
+  // AFC (8)
+  ksa: { id: 'ksa', name: 'Arábia Saudita', code: 'KSA', flag: '🇸🇦' },
+  aus: { id: 'aus', name: 'Austrália', code: 'AUS', flag: '🇦🇺' },
+  kor: { id: 'kor', name: 'Coreia do Sul', code: 'KOR', flag: '🇰🇷' },
+  irn: { id: 'irn', name: 'Irã', code: 'IRN', flag: '🇮🇷' },
+  irq: { id: 'irq', name: 'Iraque', code: 'IRQ', flag: '🇮🇶' },
+  jpn: { id: 'jpn', name: 'Japão', code: 'JPN', flag: '🇯🇵' },
+  jor: { id: 'jor', name: 'Jordânia', code: 'JOR', flag: '🇯🇴' },
+  uzb: { id: 'uzb', name: 'Uzbequistão', code: 'UZB', flag: '🇺🇿' },
+
+  // OFC (1)
+  nzl: { id: 'nzl', name: 'Nova Zelândia', code: 'NZL', flag: '🇳🇿' },
 }
 
 // Gera horários relativos ao "agora" para simular jogos de hoje
