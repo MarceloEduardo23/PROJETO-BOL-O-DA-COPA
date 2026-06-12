@@ -106,6 +106,7 @@ export const TEAMS: Record<string, Team> = {
 
   // OFC (1)
   nzl: { id: 'nzl', name: 'Nova Zelândia', code: 'NZL', flag: '🇳🇿' },
+  qa: { id: 'qa', name: 'Catar', code: 'QA', flag: 'QA'},
 }
 
 // Gera horários relativos ao "agora" para simular jogos de hoje
