@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Radio, Clock, CheckCircle2 } from 'lucide-react'
+import { Clock, CheckCircle2 } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
 import { MatchCard } from '@/components/match-card'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -12,16 +12,14 @@ export default function HomePage() {
   const { matches } = useApp()
   const [tab, setTab] = useState('todos')
 
-  const live = matches.filter((m) => m.status === 'live')
   const scheduled = matches.filter((m) => m.status === 'scheduled')
   const finished = matches.filter((m) => m.status === 'finished')
 
   const filtered = useMemo(() => {
-    if (tab === 'ao-vivo') return live
     if (tab === 'em-breve') return scheduled
     if (tab === 'encerrados') return finished
-    return [...live, ...scheduled, ...finished]
-  }, [tab, live, scheduled, finished])
+    return [...scheduled, ...finished]
+  }, [tab, scheduled, finished])
 
   return (
     <AppShell>
@@ -42,8 +40,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-3">
-          <StatCard icon={Radio} label="Ao vivo" value={live.length} tone="live" />
+        <div className="mt-6 grid grid-cols-2 gap-3">
           <StatCard icon={Clock} label="Em breve" value={scheduled.length} tone="soon" />
           <StatCard icon={CheckCircle2} label="Encerrados" value={finished.length} tone="done" />
         </div>
@@ -57,10 +54,6 @@ export default function HomePage() {
       <Tabs value={tab} onValueChange={setTab}>
         <TabsList className="mb-5">
           <TabsTrigger value="todos">Todos</TabsTrigger>
-          <TabsTrigger value="ao-vivo" className="gap-1.5">
-            {live.length > 0 && <span className="live-pulse size-1.5 rounded-full bg-destructive" />}
-            Ao vivo
-          </TabsTrigger>
           <TabsTrigger value="em-breve">Em breve</TabsTrigger>
           <TabsTrigger value="encerrados">Encerrados</TabsTrigger>
         </TabsList>
@@ -92,13 +85,12 @@ function StatCard({
   value,
   tone,
 }: {
-  icon: typeof Radio
+  icon: typeof Clock
   label: string
   value: number
-  tone: 'live' | 'soon' | 'done'
+  tone: 'soon' | 'done'
 }) {
   const toneClass = {
-    live: 'text-destructive',
     soon: 'text-primary',
     done: 'text-accent',
   }[tone]

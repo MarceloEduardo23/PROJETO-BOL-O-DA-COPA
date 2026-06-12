@@ -6,6 +6,7 @@ export async function GET() {
   const rows = await sql`
     SELECT id, name, avatar, points, exact_hits, result_hits, pool_group
     FROM users
+    WHERE is_admin = FALSE
     ORDER BY points DESC, exact_hits DESC
   `
   return NextResponse.json(

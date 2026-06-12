@@ -108,7 +108,8 @@ export function MatchCard({ match }: { match: Match }) {
     }
   }, [existing])
 
-  const locked = match.status !== 'scheduled'
+  // Bloqueia palpites quando o jogo começa (hora do kickoff) ou não está mais agendado
+  const locked = match.status !== 'scheduled' || new Date() >= new Date(match.kickoff)
   const points = scorePrediction(match, existing)
 
   function handleSave() {
@@ -203,23 +204,7 @@ export function MatchCard({ match }: { match: Match }) {
 
       {/* Ações */}
       <div className="flex items-center gap-2 border-t border-border/60 px-4 py-3">
-        {match.status === 'live' && match.youtubeId && (
-          <Button
-            variant="outline"
-            size="sm"
-            nativeButton={false}
-            className="gap-1.5 border-destructive/40 text-destructive hover:bg-destructive hover:text-white"
-            render={
-              <Link
-                href={`https://www.youtube.com/watch?v=${match.youtubeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            }
-          >
-            <PlayCircle className="size-4" /> Assistir
-          </Button>
-        )}
+
         <div className="flex-1" />
         {locked ? (
           <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
